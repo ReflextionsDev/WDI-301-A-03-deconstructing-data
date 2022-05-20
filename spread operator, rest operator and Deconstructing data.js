@@ -2,12 +2,12 @@ const userPersonalData = {
   name: 'peter',
   age: '56',
   birthday: 'jan 1st',
- };
- const userGameData = {
+};
+const userGameData = {
   score: 4546,
   accomplishments: ['won award for being good gamer', 'won 1st win', 'got good score on the weekend'],
- };
-  
+};
+
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. Combine the personalData and userGameData into a user object that is equal to the object below, by using the spread operator:
@@ -20,21 +20,23 @@ const userPersonalData = {
 // }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+const userObj = { ...userPersonalData, ...userGameData }
+console.log(userObj)
 
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 2. Make a copy of your new user object but overrode the birthday to december 31st
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
+const userObjCopy = { ...userObj, birthday: 'dec 31' }
+console.log(userObjCopy)
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 3. Use the spread operator to make a copy of the accomplishments array and store it i na new variable
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+let accomplishments = { ...userObj.accomplishments }
+console.log('accomplishments', accomplishments)
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 
@@ -50,12 +52,17 @@ var user = {
     food: ['pizza', 'tacos', 'burgers', 'italian'],
     movies: [],
   },
- };
- 
+};
+
+let { food } = user.favoriteThings
+console.log("food", food)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 5. Once you have grabbed the favorite foods. Descontrusct the food array to grab only the first 2 values. //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let [food1, food2] = food
+console.log('foods:', food1, food2)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 6. use object destructuring and the rest operator to transform the following array into 3 variables: name, age, and food. 
@@ -63,6 +70,8 @@ var user = {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const data = ['peter', '34', 'apple', 'oranges', 'pizza', 'tacos'];
 
+let [dataName, dataAge, ...dataFood] = data
+console.log('name:', dataName, 'age:', dataAge, 'food:', food)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,7 +86,7 @@ const userData = {
   name: 'Peter',
   favorites: {
     needs: {
-      food:  ['burger', 'pizza', 'tacos', 'fried chicken', 'sushi'],
+      food: ['burger', 'pizza', 'tacos', 'fried chicken', 'sushi'],
     },
     wants: {
       things: ['cars', 'jewelry'],
@@ -85,3 +94,8 @@ const userData = {
   },
 };
 
+const { name: userName, } = userData
+const { food: favoriteFood } = userData.favorites.needs
+const [favoriteThing, secondFavoriteThing] = userData.favorites.wants.things
+
+console.log('userName:', userName, 'favoriteFood:', favoriteFood, 'favoriteThing:', favoriteThing, 'secondFavoriteThing:', secondFavoriteThing)
